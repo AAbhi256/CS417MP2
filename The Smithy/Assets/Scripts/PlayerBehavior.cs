@@ -8,7 +8,7 @@ public class PlayerBehavior : MonoBehaviour
     public float reputationGenerationRate;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         goldAmount = 100;
@@ -17,7 +17,7 @@ public class PlayerBehavior : MonoBehaviour
         reputationGenerationRate = 0;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         EarnGold();

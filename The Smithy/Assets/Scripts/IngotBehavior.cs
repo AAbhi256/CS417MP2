@@ -2,17 +2,43 @@ using UnityEngine;
 
 public class IngotBehavior : MonoBehaviour
 {
-    public bool heated;
+    public IngotType ingotType;
+    public bool isHeated;
+    public Material heatedMaterial;
+    public HotSwordBehavior hotSword;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
-        heated = false;
+        isHeated = false;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         
     }
+
+    public void BecomeMolten()
+    {
+        isHeated = true;
+        GetComponent<MeshRenderer>().material = heatedMaterial;
+    }
+
+    public void BecomeHotSword()
+    {
+        Instantiate(hotSword, transform);
+        Destroy(this.gameObject);
+    }
+}
+
+public enum IngotType
+{
+    None,
+    Bronze,
+    Copper,
+    Gold,
+    Platinum,
+    Silver,
+    Steel
 }
