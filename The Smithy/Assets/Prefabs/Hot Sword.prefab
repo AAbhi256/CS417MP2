@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -94.24354, y: 0.59359926, z: -7.861024}
-  m_LocalScale: {x: 2.3589, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -283,4 +283,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b73d0d5ab2b84f7db64dba11fce2231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotSwordBehavior
-  finalSword: {fileID: 1673194077582724944, guid: e5910b3751f6c44d3898dbcdf1624050, type: 3}
+  finalSword: {fileID: 0}
