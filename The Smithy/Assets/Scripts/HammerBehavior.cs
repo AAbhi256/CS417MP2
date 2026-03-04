@@ -14,9 +14,9 @@ public class HammerBehavior : MonoBehaviour
         
     }
 
-    void OnColliderEnter (Collider other)
+    void OnCollisionEnter (Collision collision)
     {
-        IngotBehavior ingot = other.GetComponent<IngotBehavior>();
+        IngotBehavior ingot = collision.gameObject.GetComponent<IngotBehavior>();
         if (ingot != null)
         {
             ingot.BecomeHotSword();
