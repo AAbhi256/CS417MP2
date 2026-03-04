@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    public float goldAmount;
-    public float reputationAmount;
+    static public float goldAmount;
+    static public float soulAmount;
+    static public float sellPrice;
+
     public float goldGenerationRate;
     public float reputationGenerationRate;
 
@@ -11,8 +13,9 @@ public class PlayerBehavior : MonoBehaviour
 
     void Start()
     {
-        goldAmount = 100;
-        reputationAmount = 0;
+        goldAmount = 0;
+        soulAmount = 0;
+        sellPrice = 1;
         goldGenerationRate = 0;
         reputationGenerationRate = 0;
     }
@@ -31,17 +34,25 @@ public class PlayerBehavior : MonoBehaviour
 
     public void EarnReputation()
     {
-        reputationAmount += 0.1f * reputationGenerationRate * Time.deltaTime;   
+        soulAmount += 0.1f * reputationGenerationRate * Time.deltaTime;   
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Debug.Log("Player Collision Detected!");
+
         GameObject target = hit.gameObject;
         DoorBehavior door = target.GetComponent<DoorBehavior>();
         if (door != null) {
             door.WarpPlayer();
+            return;
         }
         
+        VendorBehavior vendor = target.GetComponent<VendorBehavior>();
+        if (vendor != null) {
+            vendor.buyUpgrade();
+            return;
+        }
+
     }
 }

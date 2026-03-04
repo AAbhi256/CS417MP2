@@ -27,8 +27,8 @@ public class IngotBehavior : MonoBehaviour
 
     public void BecomeHotSword()
     {
-        Instantiate(hotSword, transform);
-        Destroy(this.gameObject);
+        Instantiate(hotSword, transform.position, transform.rotation, transform.parent);
+        Destroy(gameObject);
     }
 }
 

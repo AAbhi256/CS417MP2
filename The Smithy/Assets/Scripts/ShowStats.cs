@@ -5,8 +5,8 @@ using TMPro;
 public class ShowStats : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    public PlayerBehavior player;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    //Storing stats in here statically
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
@@ -16,7 +16,7 @@ public class ShowStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Gold: " + player.goldAmount.ToString() + "\n Reputation: " + player.reputationAmount.ToString();
-        
+        text.text = "Gold: " + PlayerBehavior.goldAmount.ToString() + 
+                    "\nSouls: " + PlayerBehavior.soulAmount.ToString();
     }
 }
