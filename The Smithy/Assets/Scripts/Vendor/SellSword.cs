@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SellSword : MonoBehaviour
@@ -19,7 +20,7 @@ public class SellSword : MonoBehaviour
         FinalSwordBehavior sword = collision.gameObject.GetComponent<FinalSwordBehavior>();
         if (sword != null)
         {
-            PlayerBehavior.goldAmount += PlayerBehavior.sellPrice;
+            PlayerBehavior.goldAmount += math.round(PlayerBehavior.sellPrice * PlayerBehavior.prestigeMult);
             Destroy(sword.gameObject);
             ItemManager.curr_remaining += 1;
         }

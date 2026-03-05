@@ -1,5 +1,6 @@
 using NUnit.Framework.Interfaces;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class DoorVendor : VendorBehavior
 {
@@ -27,7 +28,7 @@ public class DoorVendor : VendorBehavior
     {
         
     }
-    override public void buyUpgrade(GameObject player)
+    override public void buyUpgrade(SelectEnterEventArgs arg)
     {
         if (PlayerBehavior.goldAmount >= price)
         {
