@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class GemVendor : VendorBehavior
 {
@@ -20,7 +21,7 @@ public class GemVendor : VendorBehavior
         }
     }
 
-    override public void buyUpgrade(GameObject player)
+    override public void buyUpgrade(SelectEnterEventArgs arg)
     {
         if (PlayerBehavior.goldAmount >= price)
         {

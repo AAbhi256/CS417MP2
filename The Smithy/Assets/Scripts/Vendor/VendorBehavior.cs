@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class VendorBehavior : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class VendorBehavior : MonoBehaviour
         }
     }
 
-    virtual public void buyUpgrade(GameObject player)
+    public virtual void buyUpgrade(SelectEnterEventArgs arg)
     {
         // Override this in child class
         Debug.Log("DEFAULT VENDOR BEHAVIOR USED. PLEASE OVERRIDE THIS FUNCTION");

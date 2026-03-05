@@ -10,14 +10,14 @@ public class PlayerBehavior : MonoBehaviour
     static public float goldGenerationRateMult;
     static public float goldGenerationRate;
     static public float gemGenerationRate;
-
+    static public float prestigeMult = 1; 
 
 
     void Start()
     {
         goldAmount = 1000000;
         gemAmount = 1000000;
-        soulAmount = 0;
+        soulAmount = 10;
         sellPrice = 1;
         goldGenerationRateMult = 1;
         goldGenerationRate = 0;
@@ -34,12 +34,12 @@ public class PlayerBehavior : MonoBehaviour
     public void EarnGold()
     {
 
-        goldAmount += 0.5F * goldGenerationRate * goldGenerationRateMult * Time.deltaTime;
+        goldAmount += 0.5F * prestigeMult * goldGenerationRate * goldGenerationRateMult * Time.deltaTime;
     }
 
     public void EarnGem()
     {
-        gemAmount += 0.1F *gemGenerationRate * Time.deltaTime;   
+        gemAmount += 0.1F * prestigeMult * gemGenerationRate * Time.deltaTime;   
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -52,12 +52,5 @@ public class PlayerBehavior : MonoBehaviour
             door.WarpPlayer();
             return;
         }
-        
-        VendorBehavior vendor = target.GetComponent<VendorBehavior>();
-        if (vendor != null) {
-            vendor.buyUpgrade(gameObject);
-            return;
-        }
-
     }
 }

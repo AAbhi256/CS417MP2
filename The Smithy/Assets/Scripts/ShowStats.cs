@@ -22,6 +22,12 @@ public class ShowStats : MonoBehaviour
             "\nSell Price: " + PlayerBehavior.sellPrice +
             "\nGold Income: " + PlayerBehavior.goldGenerationRate +
             "\nGold Income Multiplier: " + PlayerBehavior.goldGenerationRateMult; 
+        if (PlayerBehavior.prestigeMult != 1)
+        {
+            text.text += 
+            "\nPrestige Multiplier: " + PlayerBehavior.prestigeMult;
+        }
+
         if (PlayerBehavior.gemAmount != 0 || PlayerBehavior.gemGenerationRate != 0)
         {
             text.text += 

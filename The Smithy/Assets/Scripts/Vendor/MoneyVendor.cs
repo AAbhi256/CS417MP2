@@ -1,5 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class MoneyVendor : VendorBehavior
 {
@@ -14,13 +15,12 @@ public class MoneyVendor : VendorBehavior
         gameObject.SetActive(false);
     }
 
-    override public void buyUpgrade(GameObject player)
+    override public void buyUpgrade(SelectEnterEventArgs arg)
     {
         if (PlayerBehavior.gemAmount >= price)
         {
             PlayerBehavior.gemAmount -= price;
             PlayerBehavior.goldGenerationRate += 20;
-            player.transform.position += new Vector3(2, 0, 2);
             price *= 2F;
             SetText();
         }

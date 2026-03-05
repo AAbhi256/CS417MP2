@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class JewelVendor : VendorBehavior
 {
@@ -13,7 +14,7 @@ public class JewelVendor : VendorBehavior
         gameObject.SetActive(false);
     }
 
-    override public void buyUpgrade(GameObject player)
+    override public void buyUpgrade(SelectEnterEventArgs arg)
     {
         if (PlayerBehavior.gemAmount >= price)
         {
