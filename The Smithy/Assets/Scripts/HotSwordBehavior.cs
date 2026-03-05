@@ -17,7 +17,7 @@ public class HotSwordBehavior : MonoBehaviour
 
     public void BecomeFinalSword()
     {
-        Instantiate(finalSword, transform);
-        Destroy(this.gameObject);
+        Instantiate(finalSword, transform.position, transform.rotation, transform.parent);
+        Destroy(gameObject);
     }
 }

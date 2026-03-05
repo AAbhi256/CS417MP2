@@ -16,7 +16,11 @@ public class IngotBehavior : MonoBehaviour
 
     void Update()
     {
-        
+        if (transform.position.y < -100)
+        {
+            ItemManager.curr_remaining += 1;
+            Destroy(gameObject);
+        }
     }
 
     public void BecomeMolten()
@@ -27,8 +31,8 @@ public class IngotBehavior : MonoBehaviour
 
     public void BecomeHotSword()
     {
-        Instantiate(hotSword, transform);
-        Destroy(this.gameObject);
+        Instantiate(hotSword, transform.position, transform.rotation, transform.parent);
+        Destroy(gameObject);
     }
 }
 
