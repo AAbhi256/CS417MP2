@@ -16,7 +16,11 @@ public class IngotBehavior : MonoBehaviour
 
     void Update()
     {
-        
+        if (transform.position.y < -100)
+        {
+            ItemManager.curr_remaining += 1;
+            Destroy(gameObject);
+        }
     }
 
     public void BecomeMolten()

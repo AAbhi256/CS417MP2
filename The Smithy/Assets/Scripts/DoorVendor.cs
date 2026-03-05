@@ -6,12 +6,20 @@ public class DoorVendor : VendorBehavior
     public GameObject door1;
     public GameObject door2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Start()
     {
+        base.Start();
+
         if (!(door1 && door2))
         {
             gameObject.SetActive(false); //disable if the doors weren't set
         }
+                
+        // TESTING
+        door1.SetActive(true);
+        door2.SetActive(true);
+        PlayerBehavior.goldAmount -= price;
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -19,7 +27,7 @@ public class DoorVendor : VendorBehavior
     {
         
     }
-    override public void buyUpgrade()
+    override public void buyUpgrade(GameObject player)
     {
         if (PlayerBehavior.goldAmount >= price)
         {

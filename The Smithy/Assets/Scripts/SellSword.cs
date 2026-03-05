@@ -21,6 +21,7 @@ public class SellSword : MonoBehaviour
         {
             PlayerBehavior.goldAmount += PlayerBehavior.sellPrice;
             Destroy(sword.gameObject);
+            ItemManager.curr_remaining += 1;
         }
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Mathematics;
 
 public class ShowStats : MonoBehaviour
 {
@@ -16,7 +17,21 @@ public class ShowStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Gold: " + PlayerBehavior.goldAmount.ToString() + 
-                    "\nSouls: " + PlayerBehavior.soulAmount.ToString();
+        text.text = 
+            "Gold: " + math.round(PlayerBehavior.goldAmount) + 
+            "\nSell Price: " + PlayerBehavior.sellPrice +
+            "\nGold Income: " + PlayerBehavior.goldGenerationRate +
+            "\nGold Income Multiplier: " + PlayerBehavior.goldGenerationRateMult; 
+        if (PlayerBehavior.gemAmount != 0 || PlayerBehavior.gemGenerationRate != 0)
+        {
+            text.text += 
+            "\nGems: " + math.round(PlayerBehavior.gemAmount)+
+            "\nGem Income: " + PlayerBehavior.gemGenerationRate;;
+        }
+        if (PlayerBehavior.soulAmount != 0)
+        {
+            text.text += 
+            "\nSouls: " + PlayerBehavior.soulAmount;
+        }
     }
 }
