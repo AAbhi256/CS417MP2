@@ -19,7 +19,7 @@ public class ShowStats : MonoBehaviour
     {
         text.text = 
             "Gold: " + math.round(PlayerBehavior.goldAmount) + 
-            "\nSell Price: " + PlayerBehavior.sellPrice +
+            "\nSword Market Value: " + PlayerBehavior.sellPrice +
             "\nGold Income: " + PlayerBehavior.goldGenerationRate +
             "\nGold Income Multiplier: " + PlayerBehavior.goldGenerationRateMult; 
         if (PlayerBehavior.prestigeMult != 1)

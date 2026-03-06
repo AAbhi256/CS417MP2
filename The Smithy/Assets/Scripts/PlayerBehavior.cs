@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class PlayerBehavior : MonoBehaviour
     static public float gemGenerationRate;
     static public float prestigeMult = 1; 
 
+    public Canvas StatsCanvas;
+    public InputActionReference statsAction;
+
+    private Canvas temp = null;
+
 
     void Start()
     {
@@ -22,6 +28,21 @@ public class PlayerBehavior : MonoBehaviour
         goldGenerationRateMult = 1;
         goldGenerationRate = 0;
         gemGenerationRate = 0;
+
+        statsAction.action.Enable();
+        statsAction.action.performed += (ctx) => 
+        {
+            if (temp == null)
+            {
+                ViewStats();
+            }
+            else
+            {
+                Destroy(temp);
+                temp = null;
+            }
+            
+        };
     }
 
 
@@ -40,6 +61,11 @@ public class PlayerBehavior : MonoBehaviour
     public void EarnGem()
     {
         gemAmount += 0.1F * prestigeMult * gemGenerationRate * Time.deltaTime;   
+    }
+
+    public void ViewStats()
+    {
+        temp = Instantiate(StatsCanvas, this.transform.position + new Vector3(1,2,0), this.transform.rotation, null);
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)

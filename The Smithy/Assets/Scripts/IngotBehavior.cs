@@ -18,7 +18,7 @@ public class IngotBehavior : MonoBehaviour
     {
         if (transform.position.y < -100)
         {
-            ItemManager.curr_remaining += 1;
+            ItemManager.numItemsLeftToSpawn += 1;
             Destroy(gameObject);
         }
     }
