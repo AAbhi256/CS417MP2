@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Mathematics;
 
 public class ShowStats : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    public PlayerBehavior player;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    //Storing stats in here statically
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
@@ -16,7 +17,27 @@ public class ShowStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Gold: " + player.goldAmount.ToString() + "\n Reputation: " + player.reputationAmount.ToString();
-        
+        text.text = 
+            "Gold: " + math.round(PlayerBehavior.goldAmount) + 
+            "\nSword Market Value: " + PlayerBehavior.sellPrice +
+            "\nGold Income: " + PlayerBehavior.goldGenerationRate +
+            "\nGold Income Multiplier: " + PlayerBehavior.goldGenerationRateMult; 
+        if (PlayerBehavior.prestigeMult != 1)
+        {
+            text.text += 
+            "\nPrestige Multiplier: " + PlayerBehavior.prestigeMult;
+        }
+
+        if (PlayerBehavior.gemAmount != 0 || PlayerBehavior.gemGenerationRate != 0)
+        {
+            text.text += 
+            "\nGems: " + math.round(PlayerBehavior.gemAmount)+
+            "\nGem Income: " + PlayerBehavior.gemGenerationRate;;
+        }
+        if (PlayerBehavior.soulAmount != 0)
+        {
+            text.text += 
+            "\nSouls: " + PlayerBehavior.soulAmount;
+        }
     }
 }
