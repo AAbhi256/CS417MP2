@@ -23,7 +23,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         goldAmount = 1000000;
         gemAmount = 1000000;
-        soulAmount = 10;
+        soulAmount = 0;
         sellPrice = 1;
         goldGenerationRateMult = 1;
         goldGenerationRate = 0;
@@ -66,6 +66,7 @@ public class PlayerBehavior : MonoBehaviour
     public void ViewStats()
     {
         temp = Instantiate(StatsCanvas, this.transform.position + new Vector3(1,2,0), this.transform.rotation, null);
+        temp.transform.Rotate(Vector3.up * 180);
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
