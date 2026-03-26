@@ -1,4 +1,6 @@
 # CS417MP2
 (Abhinav Angirekula, Chi Jay Xu, Haengbok Chung)
 
-Forge thy blade!
+Changes
+- PopUp: added to the potal opening
+- Crafting Resources: added to the night

@@ -17,6 +17,7 @@ public class PlayerBehavior : MonoBehaviour
     public InputActionReference statsAction;
 
     private Canvas temp = null;
+    public GameObject night;
 
 
     void Start()
@@ -78,6 +79,16 @@ public class PlayerBehavior : MonoBehaviour
         if (door != null) {
             door.WarpPlayer();
             return;
+        }
+    }
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Exchanger"))
+        {
+            PlayerBehavior.goldAmount -= 10000;
+            PlayerBehavior.gemAmount += 1;
+            
         }
     }
 }

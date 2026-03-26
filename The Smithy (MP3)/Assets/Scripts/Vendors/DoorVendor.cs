@@ -6,6 +6,8 @@ public class DoorVendor : VendorBehavior
 {
     public GameObject door1;
     public GameObject door2;
+
+    public GameObject message;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
@@ -36,6 +38,7 @@ public class DoorVendor : VendorBehavior
         {
             door1.SetActive(true);
             door2.SetActive(true);
+            message.SetActive(true);
             PlayerBehavior.goldAmount -= price;
             gameObject.SetActive(false);
         }
