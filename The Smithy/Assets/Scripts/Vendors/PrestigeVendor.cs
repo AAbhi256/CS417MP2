@@ -13,6 +13,11 @@ public class PrestigeVendor : VendorBehavior
     override public void buyUpgrade(SelectEnterEventArgs arg)
     {
         PlayerBehavior.prestigeMult = 1 + (0.5F * PlayerBehavior.soulAmount);
+        PlayerBehavior playerBehavior = FindFirstObjectByType<PlayerBehavior>();
+        if (playerBehavior != null)
+        {
+            playerBehavior.Save();
+        }
         // Restart from start w/ prestiege 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
