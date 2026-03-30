@@ -4723,7 +4723,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1611372175394431173, guid: db3dc4ddaa03940d589b95f3f4827109, type: 3}
   m_PrefabInstance: {fileID: 6495492488034630297}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6495492488034630299}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ade1facc48cf8441891b0460aced62e7, type: 3}
@@ -16537,6 +16537,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1117724809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117724803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fe84971d7bec8744ae731e24f34cc2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  movingFOV: 80
+  fovTransitionSpeed: 5
 --- !u!1001 &1148218762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32075,10 +32089,63 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 680596945}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1623656069918504225, guid: db3dc4ddaa03940d589b95f3f4827109, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6495492488034630300}
     - targetCorrespondingSourceObject: {fileID: 415680488521862499, guid: db3dc4ddaa03940d589b95f3f4827109, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1117724808}
+    - targetCorrespondingSourceObject: {fileID: 415680488521862499, guid: db3dc4ddaa03940d589b95f3f4827109, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1117724809}
   m_SourcePrefab: {fileID: 100100000, guid: db3dc4ddaa03940d589b95f3f4827109, type: 3}
+--- !u!4 &6495492488034630298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3151863456615341441, guid: db3dc4ddaa03940d589b95f3f4827109, type: 3}
+  m_PrefabInstance: {fileID: 6495492488034630297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6495492488034630299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1623656069918504225, guid: db3dc4ddaa03940d589b95f3f4827109, type: 3}
+  m_PrefabInstance: {fileID: 6495492488034630297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6495492488034630300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6495492488034630299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f1e3f8479352746a9ea1c94a87b97c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoulTrophyAchievements
+  tiers:
+  - soulThreshold: 1
+    saveKey: soul_trophy_1
+    dropPrefab: {fileID: 8315792278293592270, guid: 942e708ba8b97fe4e82b101e65cd5dd2, type: 3}
+    message: "First soul \u2014 the forge remembers."
+    onUnlocked:
+      m_PersistentCalls:
+        m_Calls: []
+  - soulThreshold: 3
+    saveKey: soul_trophy_3
+    dropPrefab: {fileID: 5397752270459939958, guid: 4d7673d92596d6c45af5dcdf81cfa5df, type: 3}
+    message: "Three souls \u2014 the sky answers."
+    onUnlocked:
+      m_PersistentCalls:
+        m_Calls: []
+  - soulThreshold: 5
+    saveKey: soul_trophy_5
+    dropPrefab: {fileID: 7763389104668446071, guid: 61461b00aa811dd4b941e6abd86cc401, type: 3}
+    message: "Five souls \u2014 blade from the heavens."
+    onUnlocked:
+      m_PersistentCalls:
+        m_Calls: []
+  dropTarget: {fileID: 6495492488034630298}
+  dropHeight: 8
+  randomRadius: 0.75
 --- !u!1001 &9156501426712136797
 PrefabInstance:
   m_ObjectHideFlags: 0
