@@ -11,13 +11,13 @@ public class DoorVendor : VendorBehavior
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
-        base.Start();
+        if (message != null) message.SetActive(false);
 
-        if (!(door1 && door2))
-        {
-            //if the dev doesn't actually assign the doors that the purchase should unlock, then hide the vendor
-            gameObject.SetActive(false);
-        }
+    	// 개발자가 인스펙터에서 문을 연결하지 않은 경우, 상점 자체를 비활성화
+    	if (door1 == null || door2 == null)
+    	{
+        	gameObject.SetActive(false);
+    	}
                 
         // ------ TESTING ------
         // door1.SetActive(true);
