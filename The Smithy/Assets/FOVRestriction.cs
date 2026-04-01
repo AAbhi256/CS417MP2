@@ -35,5 +35,7 @@ public class FOVRestriction : MonoBehaviour
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, defaultFOV, Time.deltaTime * fovTransitionSpeed); // lerp back smoothly
         }
+
+        Debug.Log($"Moving: {isMoving} | Actual FOV: {cam.fieldOfView}");
     }
 }

@@ -32180,21 +32180,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoulTrophyAchievements
   tiers:
   - soulThreshold: 1
-    saveKey: soul_trophy_1
+    tierId: soul_trophy_1
     dropPrefab: {fileID: 8315792278293592270, guid: 942e708ba8b97fe4e82b101e65cd5dd2, type: 3}
     message: "First soul \u2014 the forge remembers."
     onUnlocked:
       m_PersistentCalls:
         m_Calls: []
   - soulThreshold: 3
-    saveKey: soul_trophy_3
+    tierId: soul_trophy_3
     dropPrefab: {fileID: 5397752270459939958, guid: 4d7673d92596d6c45af5dcdf81cfa5df, type: 3}
     message: "Three souls \u2014 the sky answers."
     onUnlocked:
       m_PersistentCalls:
         m_Calls: []
   - soulThreshold: 5
-    saveKey: soul_trophy_5
+    tierId: soul_trophy_5
     dropPrefab: {fileID: 7763389104668446071, guid: 61461b00aa811dd4b941e6abd86cc401, type: 3}
     message: "Five souls \u2014 blade from the heavens."
     onUnlocked:
@@ -32287,50 +32287,6 @@ PrefabInstance:
       addedObject: {fileID: 1427218620}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49ca8ed29476c41e6ac41cbc0c7d2383, type: 3}
---- !u!1 &8877665540
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8877665541}
-  - component: {fileID: 8877665542}
-  m_Layer: 0
-  m_Name: GameStateSaver
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8877665541
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8877665540}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8877665542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8877665540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8b9c0d1e2f3456789012ab34cd56ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameStateSaver
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -32344,4 +32300,3 @@ SceneRoots:
   - {fileID: 6495492488034630297}
   - {fileID: 1087960761}
   - {fileID: 1852179203}
-  - {fileID: 8877665541}

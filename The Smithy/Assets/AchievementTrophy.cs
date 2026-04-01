@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// Unlocks trophies when PlayerBehavior.soulAmount reaches each threshold (once per save).
+/// Unlocks trophies when PlayerBehavior.soulAmount reaches each threshold (once per play session).
 /// Assign dropTarget to your XR Origin / camera rig so drops appear above the player.
 /// </summary>
 public class SoulTrophyAchievements : MonoBehaviour
@@ -14,8 +14,8 @@ public class SoulTrophyAchievements : MonoBehaviour
         [Tooltip("Minimum souls required (inclusive). Souls are +1 per SoulVendor purchase.")]
         public int soulThreshold = 1;
 
-        [Tooltip("Unique id for PlayerPrefs, e.g. soul_01. Must be unique per tier.")]
-        public string saveKey = "soul_01";
+        [Tooltip("Unique id for this tier (debug / future use).")]
+        public string tierId = "soul_01";
 
         [Tooltip("Prefab spawned high above the player. Add Rigidbody if it should fall.")]
         public GameObject dropPrefab;
@@ -28,9 +28,9 @@ public class SoulTrophyAchievements : MonoBehaviour
 
     [SerializeField] private SoulTrophyTier[] tiers = new SoulTrophyTier[]
     {
-        new SoulTrophyTier { soulThreshold = 1,  saveKey = "soul_trophy_1", message = "First soul — the forge remembers." },
-        new SoulTrophyTier { soulThreshold = 3,  saveKey = "soul_trophy_3", message = "Three souls — the sky answers." },
-        new SoulTrophyTier { soulThreshold = 5, saveKey = "soul_trophy_5", message = "Five souls — blade from the heavens." },
+        new SoulTrophyTier { soulThreshold = 1,  tierId = "soul_trophy_1", message = "First soul — the forge remembers." },
+        new SoulTrophyTier { soulThreshold = 3,  tierId = "soul_trophy_3", message = "Three souls — the sky answers." },
+        new SoulTrophyTier { soulThreshold = 5, tierId = "soul_trophy_5", message = "Five souls — blade from the heavens." },
     };
 
     [SerializeField] private Transform dropTarget;
@@ -39,7 +39,7 @@ public class SoulTrophyAchievements : MonoBehaviour
 
     [SerializeField] private float randomRadius = 0.75f;
 
-    private const string PrefsPrefix = "TrophyUnlocked_";
+    private bool[] tierClaimedThisSession;
 
     private void Reset()
     {
@@ -51,6 +51,7 @@ public class SoulTrophyAchievements : MonoBehaviour
     {
         if (dropTarget == null)
             dropTarget = transform;
+        tierClaimedThisSession = new bool[tiers.Length];
     }
 
     private void Update()
@@ -66,12 +67,10 @@ public class SoulTrophyAchievements : MonoBehaviour
             if (souls < tier.soulThreshold)
                 continue;
 
-            string key = PrefsPrefix + tier.saveKey;
-            if (PlayerPrefs.GetInt(key, 0) != 0)
+            if (tierClaimedThisSession[i])
                 continue;
 
-            PlayerPrefs.SetInt(key, 1);
-            PlayerPrefs.Save();
+            tierClaimedThisSession[i] = true;
 
             UnlockTier(tier);
         }
