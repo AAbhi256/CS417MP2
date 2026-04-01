@@ -32180,29 +32180,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoulTrophyAchievements
   tiers:
   - soulThreshold: 1
-    saveKey: soul_trophy_1
-    dropPrefab: {fileID: 8315792278293592270, guid: 942e708ba8b97fe4e82b101e65cd5dd2, type: 3}
+    tierId: soul_trophy_1
+    sceneTrophy: {fileID: 0}
     message: "First soul \u2014 the forge remembers."
     onUnlocked:
       m_PersistentCalls:
         m_Calls: []
   - soulThreshold: 3
-    saveKey: soul_trophy_3
-    dropPrefab: {fileID: 5397752270459939958, guid: 4d7673d92596d6c45af5dcdf81cfa5df, type: 3}
+    tierId: soul_trophy_3
+    sceneTrophy: {fileID: 0}
     message: "Three souls \u2014 the sky answers."
     onUnlocked:
       m_PersistentCalls:
         m_Calls: []
   - soulThreshold: 5
-    saveKey: soul_trophy_5
-    dropPrefab: {fileID: 7763389104668446071, guid: 61461b00aa811dd4b941e6abd86cc401, type: 3}
+    tierId: soul_trophy_5
+    sceneTrophy: {fileID: 0}
     message: "Five souls \u2014 blade from the heavens."
     onUnlocked:
       m_PersistentCalls:
         m_Calls: []
-  dropTarget: {fileID: 6495492488034630298}
-  dropHeight: 8
-  randomRadius: 0.75
 --- !u!1001 &9156501426712136797
 PrefabInstance:
   m_ObjectHideFlags: 0

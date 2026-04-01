@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// Unlocks trophies when PlayerBehavior.soulAmount reaches each threshold (once per play session).
-/// Assign dropTarget to your XR Origin / camera rig so drops appear above the player.
+/// Multi-trophy manager: one component, many tiers, each with its own scene <see cref="SoulTrophyTier.sceneTrophy"/>.
+/// For a single sword, prefer <see cref="SoulSwordTrophy"/> on that object instead.
 /// </summary>
 public class SoulTrophyAchievements : MonoBehaviour
 {
@@ -17,8 +17,8 @@ public class SoulTrophyAchievements : MonoBehaviour
         [Tooltip("Unique id for this tier (debug / future use).")]
         public string tierId = "soul_01";
 
-        [Tooltip("Prefab spawned high above the player. Add Rigidbody if it should fall.")]
-        public GameObject dropPrefab;
+        [Tooltip("Pre-placed GameObject in the scene (sword + trophy hierarchy). Hidden until souls reach the threshold.")]
+        public GameObject sceneTrophy;
 
         [TextArea]
         public string message = "Achievement unlocked!";
@@ -28,30 +28,29 @@ public class SoulTrophyAchievements : MonoBehaviour
 
     [SerializeField] private SoulTrophyTier[] tiers = new SoulTrophyTier[]
     {
-        new SoulTrophyTier { soulThreshold = 1,  tierId = "soul_trophy_1", message = "First soul — the forge remembers." },
-        new SoulTrophyTier { soulThreshold = 3,  tierId = "soul_trophy_3", message = "Three souls — the sky answers." },
+        new SoulTrophyTier { soulThreshold = 1, tierId = "soul_trophy_1", message = "First soul — the forge remembers." },
+        new SoulTrophyTier { soulThreshold = 3, tierId = "soul_trophy_3", message = "Three souls — the sky answers." },
         new SoulTrophyTier { soulThreshold = 5, tierId = "soul_trophy_5", message = "Five souls — blade from the heavens." },
     };
 
-    [SerializeField] private Transform dropTarget;
-
-    [SerializeField] private float dropHeight = 8f;
-
-    [SerializeField] private float randomRadius = 0.75f;
-
-    private bool[] tierClaimedThisSession;
-
-    private void Reset()
-    {
-        if (dropTarget == null)
-            dropTarget = transform;
-    }
+    private bool[] tierUnlockedThisSession;
 
     private void Awake()
     {
-        if (dropTarget == null)
-            dropTarget = transform;
-        tierClaimedThisSession = new bool[tiers.Length];
+        tierUnlockedThisSession = new bool[tiers.Length];
+        HideAllSceneTrophies();
+    }
+
+    /// <summary>
+    /// Ensures trophies start invisible even if left active in the scene.
+    /// </summary>
+    private void HideAllSceneTrophies()
+    {
+        for (int i = 0; i < tiers.Length; i++)
+        {
+            if (tiers[i] != null && tiers[i].sceneTrophy != null)
+                tiers[i].sceneTrophy.SetActive(false);
+        }
     }
 
     private void Update()
@@ -61,29 +60,23 @@ public class SoulTrophyAchievements : MonoBehaviour
         for (int i = 0; i < tiers.Length; i++)
         {
             SoulTrophyTier tier = tiers[i];
-            if (tier == null || tier.dropPrefab == null)
+            if (tier == null || tier.sceneTrophy == null)
                 continue;
 
             if (souls < tier.soulThreshold)
                 continue;
 
-            if (tierClaimedThisSession[i])
+            if (tierUnlockedThisSession[i])
                 continue;
 
-            tierClaimedThisSession[i] = true;
-
+            tierUnlockedThisSession[i] = true;
             UnlockTier(tier);
         }
     }
 
     private void UnlockTier(SoulTrophyTier tier)
     {
-        Vector3 origin = dropTarget.position;
-        Vector2 r = UnityEngine.Random.insideUnitCircle * randomRadius;
-        Vector3 spawnPos = origin + new Vector3(r.x, dropHeight, r.y);
-        Quaternion rot = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f);
-
-        Instantiate(tier.dropPrefab, spawnPos, rot);
+        tier.sceneTrophy.SetActive(true);
         Debug.Log($"[Trophy] {tier.message}");
         tier.onUnlocked?.Invoke();
     }
