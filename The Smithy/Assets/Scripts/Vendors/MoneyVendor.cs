@@ -23,6 +23,7 @@ public class MoneyVendor : VendorBehavior
             PlayerBehavior.goldGenerationRate += 20;
             price *= 2F;
             SetText();
+            StartCoroutine(upgradeVendor());
         }
     }
 }

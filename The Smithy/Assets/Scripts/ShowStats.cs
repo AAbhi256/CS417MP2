@@ -7,6 +7,9 @@ public class ShowStats : MonoBehaviour
 {
     public TextMeshProUGUI text;
 
+    public GameObject right_controller;
+    bool[] new_unlock = {false,false};
+
     //Storing stats in here statically
     void Start()
     {
@@ -30,13 +33,23 @@ public class ShowStats : MonoBehaviour
 
         if (PlayerBehavior.gemAmount != 0 || PlayerBehavior.gemGenerationRate != 0)
         {
+            if (!new_unlock[0])
+            {
+                new_unlock[0] = true;
+                right_controller.GetComponent<AudioSource>().Play();
+            }
             text.text += 
             "\nGems: " + math.round(PlayerBehavior.gemAmount)+
             "\nGem Income: " + PlayerBehavior.gemGenerationRate;;
         }
         if (PlayerBehavior.soulAmount != 0)
-        {
-            text.text += 
+        {            
+            if (!new_unlock[1])
+            {
+                new_unlock[1] = true;
+                right_controller.GetComponent<AudioSource>().Play();
+            }
+                text.text += 
             "\nSouls: " + PlayerBehavior.soulAmount;
         }
     }
