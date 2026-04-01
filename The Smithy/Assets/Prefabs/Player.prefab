@@ -977,6 +977,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade1facc48cf8441891b0460aced62e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBehavior
+  StatsCanvas: {fileID: 0}
+  statsAction: {fileID: 0}
 --- !u!1 &2682173116308919202
 GameObject:
   m_ObjectHideFlags: 0
