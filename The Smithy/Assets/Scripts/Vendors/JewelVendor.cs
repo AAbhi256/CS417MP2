@@ -20,7 +20,7 @@ public class JewelVendor : VendorBehavior
         {
             PlayerBehavior.gemAmount -= price;
             PlayerBehavior.goldGenerationRateMult = 10F;
-            gameObject.SetActive(false);
+            StartCoroutine(destroyVendor());
         }
     }
 }

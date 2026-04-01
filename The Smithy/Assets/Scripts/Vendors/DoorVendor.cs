@@ -17,19 +17,8 @@ public class DoorVendor : VendorBehavior
             gameObject.SetActive(false);
         }
                 
-        // ------ TESTING ------
-        // door1.SetActive(true);
-        // door2.SetActive(true);
-        // PlayerBehavior.goldAmount -= price;
-        // gameObject.SetActive(false);
-        // ---------------------
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     override public void buyUpgrade(SelectEnterEventArgs arg)
     {
         if (PlayerBehavior.goldAmount >= price)
@@ -37,7 +26,7 @@ public class DoorVendor : VendorBehavior
             door1.SetActive(true);
             door2.SetActive(true);
             PlayerBehavior.goldAmount -= price;
-            gameObject.SetActive(false);
+            StartCoroutine(destroyVendor());
         }
     }
 

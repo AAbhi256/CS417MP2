@@ -4,12 +4,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class GeneratorVendor : VendorBehavior
 {
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     override public void buyUpgrade(SelectEnterEventArgs arg)
     {
         if (PlayerBehavior.goldAmount >= price)
@@ -19,6 +13,8 @@ public class GeneratorVendor : VendorBehavior
 
             price = math.round(price * 1.2F);
             SetText();
+            StartCoroutine(upgradeVendor());
+
         }
     }
 }

@@ -38,7 +38,7 @@ public class GemVendor : VendorBehavior
                 MoneyVendor.money_vendor.SetActive(true);
                 JewelVendor.jewel_vendor.SetActive(true);
             }
-            gameObject.SetActive(false);
+            StartCoroutine(destroyVendor());
         }
     }
 }

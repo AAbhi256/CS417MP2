@@ -11,6 +11,7 @@ public class SoulVendor : VendorBehavior
             PlayerBehavior.soulAmount += 1;
             price *= 3F;
             SetText();
+            StartCoroutine(upgradeVendor());
         }
     }
 }
