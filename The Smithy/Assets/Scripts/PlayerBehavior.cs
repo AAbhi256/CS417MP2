@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Avatar = Alteruna.Avatar;
-using TrackedPoseDriver = UnityEngine.SpatialTracking.TrackedPoseDriver;
+using TrackedPoseDriver = UnityEngine.InputSystem.XR.TrackedPoseDriver;
 
 public class PlayerBehavior : MonoBehaviour
 {
