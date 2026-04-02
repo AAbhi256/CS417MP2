@@ -1,22 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-public class JuicyTrophyTwo : MonoBehaviour
+public class JuicyTrophy : MonoBehaviour
 {
     private const float SecondChildVisibleSeconds = 5f;
 
     [SerializeField] private int soulsNeeded = 1;
 
     private bool _unlocked;
+    public ParticleSystem ps;
 
     private void Start()
     {
-        for (int i = 0; i < transform.childCount; i++)
-            transform.GetChild(i).gameObject.SetActive(false);
 
-        Debug.Log(
-            $"[TrophyRevealOnSouls] '{name}': Hid {transform.childCount} child(ren). Need souls >= {soulsNeeded}.",
-            this);
     }
 
     private void Update()
@@ -27,15 +23,17 @@ public class JuicyTrophyTwo : MonoBehaviour
         if (Mathf.FloorToInt(PlayerBehavior.soulAmount) < soulsNeeded)
             return;
 
-        _unlocked = true;
-
         if (transform.childCount < 1)
         {
             Debug.LogWarning($"[TrophyRevealOnSouls] '{name}': Need at least 1 child.", this);
             return;
         }
 
-        transform.GetChild(0).gameObject.SetActive(true);
+        _unlocked = true;
+        ParticleSystem.EmissionModule emission = ps.emission;
+        emission.rateOverTime = 3;
+
+
         Debug.Log($"[TrophyRevealOnSouls] '{name}': Child 0 '{transform.GetChild(0).name}' shown (permanent).", this);
 
         if (transform.childCount >= 2)
