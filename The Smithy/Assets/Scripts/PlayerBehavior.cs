@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Avatar = Alteruna.Avatar;
+using TrackedPoseDriver = UnityEngine.SpatialTracking.TrackedPoseDriver;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -19,8 +21,41 @@ public class PlayerBehavior : MonoBehaviour
     private Canvas temp = null;
 
 
+
+
+    private Avatar avatar;
+    [SerializeField]
+    private Transform head;
+    [SerializeField]
+    private Camera camera;
+    [SerializeField]
+    private int playerSelfLayer;
+    [SerializeField]
+    private TrackedPoseDriver leftHandDriver, rightHandDriver;
+
+    void Awake()
+    {
+        avatar = GetComponent<Avatar>();
+    }
     void Start()
     {
+
+        if (avatar.IsMe)
+        {
+            head.gameObject.layer = playerSelfLayer;
+            foreach (Transform child in head)
+            {
+                child.gameObject.layer = playerSelfLayer;
+            }
+        }
+        else
+        {
+            leftHandDriver.enabled = false;
+            rightHandDriver.enabled = false;
+            camera.gameObject.SetActive(false);
+        }
+
+
         goldAmount = 1000000;
         gemAmount = 1000000;
         soulAmount = 0;
@@ -48,6 +83,13 @@ public class PlayerBehavior : MonoBehaviour
 
     void Update()
     {
+        if (avatar.IsMe)
+        {
+            head.localPosition = camera.transform.localPosition;
+            head.rotation = camera.transform.rotation;
+        }
+
+
         EarnGold();
         EarnGem();
     }
