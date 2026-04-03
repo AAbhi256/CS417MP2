@@ -6,6 +6,7 @@ Changes
 - Crafting Resources: added to the night
 
 AI Disclosure
+
 i used Gemini-Pro to debug code at April 2026.
 All AI-generated content was thoroughly reviewed and revised by me to ensure its accuracy and relevance. 
 I can provide the unedited transcripts with prompts, interactions. 
