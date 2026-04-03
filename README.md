@@ -1,4 +1,4 @@
-# CS417MP2
+# CS417MP3
 (Abhinav Angirekula, Chi Jay Xu, Haengbok Chung, Bella Yu)
 
 Changes
